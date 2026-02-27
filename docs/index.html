@@ -237,7 +237,9 @@
         
         <section>
             <h2>Security Hardening</h2>
-            <p style="margin-bottom:20px;color:#737373">OpenClaw deployments can be hardened against known attack vectors. here's what works:</p>
+            <p style="margin-bottom:20px;color:#737373">OpenClaw deployments can be hardened against known attack vectors. practical baseline + advanced controls:</p>
+
+            <h3 style="margin:0 0 10px 0;color:#444">General advice for VPS installation</h3>
             
             <div class="security-group">
                 <h3>1. Gateway Hardening</h3>
@@ -300,6 +302,34 @@
             
             <div class="cve-note">
                 <strong>CVEs addressed:</strong> CVE-2026-25253 (RCE via exposed gateway), CVE-2026-26329 (path traversal), CVE-2026-27001 (prompt injection via untrusted content)
+            </div>
+
+            <h3 style="margin:26px 0 10px 0;color:#444">VM-on-workstation security practices (advanced)</h3>
+            <div class="security-group">
+                <h3>1. Hypervisor Isolation</h3>
+                <ul>
+                    <li><strong>Disable host integration</strong> — Turn off shared clipboard, drag-drop, and shared folders by default.</li>
+                    <li><strong>No USB passthrough by default</strong> — Attach only when explicitly required.</li>
+                    <li><strong>Prefer NAT/host-only networking</strong> — Avoid bridged mode unless necessary.</li>
+                </ul>
+            </div>
+
+            <div class="security-group">
+                <h3>2. Host ↔ VM Trust Boundary</h3>
+                <ul>
+                    <li><strong>Separate SSH keys</strong> — Do not reuse host keys inside VM.</li>
+                    <li><strong>Separate secrets</strong> — Keep VM secrets independent from host secrets.</li>
+                    <li><strong>No host home mounts</strong> — Prevent accidental cross-boundary secret leakage.</li>
+                </ul>
+            </div>
+
+            <div class="security-group">
+                <h3>3. Segmentation, Recovery, and Forensics</h3>
+                <ul>
+                    <li><strong>Segment network egress</strong> — Allowlist only required destinations (LLM providers, channels, package mirrors).</li>
+                    <li><strong>Immutable ops pattern</strong> — Keep clean snapshots and rebuild from script, don't hand-patch forever.</li>
+                    <li><strong>Forensics readiness</strong> — Centralized append-only logs + periodic incident drills (key rotation, rebuild, restore).</li>
+                </ul>
             </div>
         </section>
         
