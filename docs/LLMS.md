@@ -30,7 +30,14 @@ This file is a machine-friendly summary of the `avi-landing` website.
 
 ### 4) x402 OpenRouter Proxy
 - URL: https://www.8004scan.io/agents/base/18759
-- Summary: ERC-8004 registered agent that enables USDC-paid OpenRouter calls with auth/rate controls.
+- Summary: ERC-8004 registered agent for USDC-paid OpenRouter access (A2A discovery + direct OpenRouter-compatible endpoint).
+
+#### x402 OpenRouter Proxy — Usage
+1. Send USDC on Base to the configured x402 payment address.
+2. Call OpenRouter-compatible endpoint: `/v1/chat/completions`.
+3. Include payment proof header (x402): `X-Payment: {"txHash":"0x...","payer":"0xYourWallet"}`.
+4. First successful paid call provisions/links per-agent credits.
+5. Subsequent calls consume prepaid balance with nonce/rate-limit protections.
 
 ### 5) x402 Token Sentiment API
 - URL: https://www.8004scan.io/agents/base/20229
@@ -60,11 +67,18 @@ Human-readable JSON narrative including:
 - conclusion
 
 ## Security Hardening Themes
+
+### General advice for VPS installation
 - Gateway hardening (loopback binding, auth, no direct exposure)
 - Channel access control (allowlists, strict sender control)
 - Prompt injection defense (two-stage scanning, fail-closed rules)
 - Secret protection (redaction + secure file permissions)
 - Automated monitoring (nightly audits + heartbeat checks)
+
+### VM-on-workstation practices (advanced)
+- Hypervisor isolation (disable shared clipboard/folders/USB by default)
+- Host↔VM trust boundary (separate SSH keys, separate secrets, no host-home mounts)
+- Segmentation + recovery + forensics (egress allowlist, immutable snapshots, append-only logs)
 
 ## Links
 - GitHub: https://github.com/aviclaw
