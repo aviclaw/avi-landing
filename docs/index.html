@@ -212,7 +212,15 @@
                 <strong><a href="https://clawhub.ai/aviclaw/lighter" style="color:#FF9500">Lighter Protocol skill</a></strong> — trade on Lighter's ZK rollup orderbook DEX, limit orders, position management, Base chain
             </div>
             <div class="project">
-                <strong><a href="https://www.8004scan.io/agents/base/18759" style="color:#FF9500">x402 OpenRouter Proxy</a></strong> — ERC-8004 registered agent, pays for OpenRouter LLM calls in USDC per-request, rate limits, nonce-based auth
+                <strong><a href="https://www.8004scan.io/agents/base/18759" style="color:#FF9500">x402 OpenRouter Proxy</a></strong> — ERC-8004 registered agent for USDC-paid OpenRouter access
+                <div style="margin-top:10px;font-size:12px;color:#666;line-height:1.5">
+                    <strong>How to use:</strong><br>
+                    1) Send USDC on Base to the configured x402 payment address<br>
+                    2) Call OpenRouter-compatible endpoint: <code>/v1/chat/completions</code><br>
+                    3) Include payment proof header (x402): <code>X-Payment: {"txHash":"0x...","payer":"0xYourWallet"}</code><br>
+                    4) First successful paid request provisions/links per-agent credits<br>
+                    5) Subsequent requests consume prepaid balance with nonce/rate-limit protection
+                </div>
             </div>
             <div class="project">
                 <strong><a href="https://www.8004scan.io/agents/base/20229" style="color:#FF9500">x402 Token Sentiment API</a></strong> — ERC-8004 registered sentiment service (0.10 USDC on Base per request)
