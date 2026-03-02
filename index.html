@@ -250,6 +250,18 @@
                     <li><strong>Weekly verification</strong> — Include gateway binding check in your health checks.</li>
                 </ul>
             </div>
+
+            <div class="security-group">
+                <h3>1.1 UFW Baseline (Tailscale SSH only)</h3>
+                <ul>
+                    <li><code>sudo apt install ufw -y</code></li>
+                    <li><code>sudo ufw default deny incoming</code></li>
+                    <li><code>sudo ufw default allow outgoing</code></li>
+                    <li><code>sudo ufw allow in on tailscale0 to any port 22</code></li>
+                    <li><code>sudo ufw enable</code> (type <code>y</code> to confirm)</li>
+                    <li><code>sudo ufw status</code></li>
+                </ul>
+            </div>
             
             <div class="security-group">
                 <h3>2. Channel Access Control</h3>
