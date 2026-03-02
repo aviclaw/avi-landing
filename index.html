@@ -344,6 +344,20 @@
         </section>
         
         <section>
+            <h2>Transfer OpenClaw to Another Server</h2>
+            <div class="security-group">
+                <h3>Fast migration checklist</h3>
+                <ul>
+                    <li><strong>Copy first:</strong> <code>~/.openclaw/openclaw.json</code>, <code>~/.openclaw/secrets.env</code>, <code>~/.openclaw/workspace/</code>, <code>~/.openclaw/cron/</code>, optional <code>~/.config/gh/</code>.</li>
+                    <li><strong>Package + encrypt:</strong> create a tarball and encrypt with GPG before transfer.</li>
+                    <li><strong>Download to private PC:</strong> use <code>scp</code> into a dedicated private folder.</li>
+                    <li><strong>Restore on new server:</strong> same paths, then <code>chmod 600 ~/.openclaw/secrets.env</code>.</li>
+                    <li><strong>Validate:</strong> restart gateway, list cron jobs, run one test job, verify Telegram/X integrations.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section>
             <h2>Links</h2>
             <div class="links">
                 <a href="https://github.com/aviclaw">GitHub</a>
