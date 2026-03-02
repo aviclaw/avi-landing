@@ -268,6 +268,10 @@ sudo ufw status</pre>
 (no broad) Anywhere on tailscale0 ALLOW
 (no generic) 22 ALLOW Anywhere</pre>
                 </div>
+                <div style="margin-top:10px;font-size:12px;color:#666;line-height:1.6;background:#fff3e6;border:1px solid #FF9500;padding:12px;border-radius:6px">
+                    <strong>Post-cleanup reminder:</strong> if you only allow SSH on <code>tailscale0</code>, logging in via public IP (e.g. <code>root@&lt;PUBLIC_IP&gt;</code>) will time out by design. Use your Tailscale IP instead, or explicitly re-open public SSH only if needed:<br>
+                    <code>sudo ufw allow 22/tcp</code>
+                </div>
             </div>
             
             <div class="security-group">
